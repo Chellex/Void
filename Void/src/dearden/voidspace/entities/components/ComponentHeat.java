@@ -6,10 +6,11 @@ public class ComponentHeat extends Component {
 
 	private float heatCapacity;
 	private float currentHeatLevel;       //How hot something is from 0.0 to 1.0
-	private Circle circleHeat;     //The radius of radiation.
+	private Circle circleHeat;            //The radius of radiation.
 	
-	public ComponentHeat(float heatCapacity){
+	public ComponentHeat(float heatCapacity, float x, float y){
 		this.heatCapacity = heatCapacity;
+		this.init(x, y);
 	}
 	
 	/*
@@ -19,14 +20,30 @@ public class ComponentHeat extends Component {
 		circleHeat = new Circle(x, y, heatCapacity * currentHeatLevel);
 	}
 	
+	/*
+	 * Since players are able to customize their ships, I needed a simple
+	 * way to change the level of heat signatures each ship will give off.
+	 * The higher level weapons and upgrades, the higher the heatCapacity is.
+	 * currentHeatLevel is the percentage of the heatCapacity which depends
+	 * on how many of the ship's addons are currently turned on.
+	 */
 	@Override
 	public void update(){
-		
+		circleHeat.setRadius(heatCapacity * currentHeatLevel);
+	}
+	
+	@Override
+	public void handleMessage(String message) {
+		// TODO Auto-generated method stub
 	}
 	
 	@Override
 	public void cleanUp(){
 		
+	}
+	
+	public void setHeatLevel(float numAddons, float numActivated){
+		currentHeatLevel = (numActivated * 100) / numAddons;
 	}
 	
 	/*

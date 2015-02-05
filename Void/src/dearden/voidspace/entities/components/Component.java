@@ -1,6 +1,6 @@
 package dearden.voidspace.entities.components;
 
-public class Component {
+public abstract class Component {
 
 	protected String name;
 	protected ComponentType type;
@@ -19,6 +19,8 @@ public class Component {
 	public void update(){
 		
 	}
+	
+	public abstract void handleMessage(String message);
 	
 	public void cleanUp(){
 		

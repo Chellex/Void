@@ -19,6 +19,10 @@ public abstract class Entity extends Rectangle {
 	/*
 	 * Functions start.
 	 */
+	public void init(){
+		
+	}
+	
 	public void addComponent(Component component){
 		baseComponents.add(component);
 	}
@@ -45,6 +49,6 @@ public abstract class Entity extends Rectangle {
 		}
 	}
 	
-	public abstract void handleMessage();
+	public abstract void handleMessage(String message);
 	
 }

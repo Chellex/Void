@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class SystemHeat {
 
 	public void update(ArrayList<Entity> entityDB){
-		
+		for(int x = 0; x < entityDB.size(); x++){
+			//if(entityDB.get(x))
+		}
 	}
 }

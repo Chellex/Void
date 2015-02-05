@@ -7,7 +7,10 @@ import dearden.voidspace.geom.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Entity extends Rectangle {
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+
+public class Entity extends Rectangle {
 
 	protected List<Component> baseComponents;
 	
@@ -19,36 +22,61 @@ public abstract class Entity extends Rectangle {
 	/*
 	 * Functions start.
 	 */
-	public void init(){
-		
-	}
+	public void init(){}
 	
 	public void addComponent(Component component){
+		component.setParent(this);
 		baseComponents.add(component);
 	}
 	
 	public void removeComponent(String name){
 		for(int x = 0; x < baseComponents.size(); x++){
 			if(baseComponents.get(x).getName() == name){
+				baseComponents.get(x).cleanUp();
 				baseComponents.remove(x);
 			}
 		}
 	}
 	
-	public void updateComponents(){
+	public void updateComponents(GameContainer gc, int delta){
 		for(int x = 0; x < baseComponents.size(); x++){
-			baseComponents.get(x).update();
+			baseComponents.get(x).update(gc, delta);
 		}
 	}
 	
-	public void updateComponentType(ComponentType type){
+	public void renderComponents(GameContainer gc, Graphics g){
+		for(int x = 0; x < baseComponents.size(); x++){
+			baseComponents.get(x).render(gc, g);
+		}
+	}
+	
+	public void updateComponentType(GameContainer gc, int delta, ComponentType type){
 		for(int x = 0; x < baseComponents.size(); x++){
 			if(baseComponents.get(x).getType() == type){
-				baseComponents.get(x).update();
+				baseComponents.get(x).update(gc, delta);
 			}
 		}
 	}
 	
-	public abstract void handleMessage(String message);
+	public void renderComponentType(GameContainer gc, Graphics g, ComponentType type){
+		for(int x = 0; x < baseComponents.size(); x++){
+			if(baseComponents.get(x).getType() == type){
+				baseComponents.get(x).render(gc, g);
+			}
+		}
+	}
 	
+	public void handleMessage(String message){};
+	
+	/*
+	 * GET Functions start.
+	 */
+	public boolean hasComponent(ComponentType type){
+		for(int x = 0; x < baseComponents.size(); x++){
+			if(baseComponents.get(x).getType() == type){
+				return true;
+			}
+		}
+		return false;
+	}
 }

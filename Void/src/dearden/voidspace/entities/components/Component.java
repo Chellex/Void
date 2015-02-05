@@ -1,7 +1,13 @@
 package dearden.voidspace.entities.components;
 
+import dearden.voidspace.entities.Entity;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+
 public abstract class Component {
 
+	protected Entity parent;
 	protected String name;
 	protected ComponentType type;
 	
@@ -12,18 +18,21 @@ public abstract class Component {
 	/*
 	 * Functions start.
 	 */
-	public void init(){
-		
-	}
+	public void init(){}
 	
-	public void update(){
-		
-	}
+	public void update(GameContainer gc, int delta){}
 	
-	public abstract void handleMessage(String message);
+	public void render(GameContainer gc, Graphics g){}
 	
-	public void cleanUp(){
-		
+	public abstract void handleMessage(ComponentType type, String message);
+	
+	public abstract void cleanUp();
+	
+	/*
+	 * SET Functions start.
+	 */
+	public void setParent(Entity parent){
+		this.parent = parent;
 	}
 	
 	/*

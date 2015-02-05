@@ -1,5 +1,8 @@
 package dearden.voidspace.entities.components;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+
 import dearden.voidspace.geom.Circle;
 
 public class ComponentHeat extends Component {
@@ -10,13 +13,15 @@ public class ComponentHeat extends Component {
 	
 	public ComponentHeat(float heatCapacity, float x, float y){
 		this.heatCapacity = heatCapacity;
-		this.init(x, y);
+		this.makeCircle(x, y);
 	}
 	
 	/*
 	 * Functions start.
 	 */
-	public void init(float x, float y){
+	
+	
+	public void makeCircle(float x, float y){
 		circleHeat = new Circle(x, y, heatCapacity * currentHeatLevel);
 	}
 	
@@ -28,12 +33,12 @@ public class ComponentHeat extends Component {
 	 * on how many of the ship's addons are currently turned on.
 	 */
 	@Override
-	public void update(){
+	public void update(GameContainer gc, int delta){
 		circleHeat.setRadius(heatCapacity * currentHeatLevel);
 	}
 	
 	@Override
-	public void handleMessage(String message) {
+	public void handleMessage(ComponentType type, String message) {
 		// TODO Auto-generated method stub
 	}
 	
@@ -55,5 +60,16 @@ public class ComponentHeat extends Component {
 	
 	public float getDetectionRadius(){
 		return circleHeat.getRadius();
+	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(GameContainer gc, Graphics g) {
+		// TODO Auto-generated method stub
 	}
 }

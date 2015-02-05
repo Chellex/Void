@@ -12,6 +12,7 @@ public class Circle extends Point {
 	/*
 	 * Functions start.
 	 */
+	
 	public boolean contains(Point point){
 		if(this.distance(point) <= radius){
 			return true;
@@ -37,4 +38,18 @@ public class Circle extends Point {
 	public boolean overlaps(Triangle tri){
 		
 	}*/
+	
+	/*
+	 * SET Functions.
+	 */
+	public void setRadius(float radius){
+		this.radius = radius;
+	}
+	
+	/*
+	 * GET Functions.
+	 */
+	public float getRadius(){
+		return radius;
+	}
 }

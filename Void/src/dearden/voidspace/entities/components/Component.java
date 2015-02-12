@@ -18,7 +18,7 @@ public abstract class Component {
 	/*
 	 * Functions start.
 	 */
-	public void init(){}
+	public void init(GameContainer gc){}
 	
 	public void update(GameContainer gc, int delta){}
 	

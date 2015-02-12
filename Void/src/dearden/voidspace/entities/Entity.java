@@ -66,7 +66,11 @@ public class Entity extends Rectangle {
 		}
 	}
 	
-	public void handleMessage(String message){};
+	public void sendMessage(ComponentType type, String message){
+		for(int x = 0; x < baseComponents.size(); x++){
+			baseComponents.get(x).handleMessage(type, message);
+		}
+	}
 	
 	/*
 	 * GET Functions start.
@@ -78,5 +82,19 @@ public class Entity extends Rectangle {
 			}
 		}
 		return false;
+	}
+	
+	public List<Component> getBaseComponents(){
+		return baseComponents;
+	}
+	
+	// Make this better Chris.
+	public Component getComponent(ComponentType type){
+		for(int x = 0; x < baseComponents.size(); x++){
+			if(baseComponents.get(x).getType() == type){
+				return baseComponents.get(x);
+			}
+		}
+		return null;
 	}
 }

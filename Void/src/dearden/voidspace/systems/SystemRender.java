@@ -14,10 +14,20 @@ public class SystemRender {
 		
 	}
 	
+	public void update(GameContainer gc, int delta, List<Entity> entityDB){
+		for(int x = 0; x < entityDB.size(); x++){
+			if(entityDB.get(x).hasComponent(ComponentType.ANIMATION)){
+				entityDB.get(x).updateComponentType(gc, delta, ComponentType.ANIMATION);
+			}
+		}
+	}
+	
 	public void render(GameContainer gc, Graphics g, List<Entity> entityDB){
 		for(int x = 0; x < entityDB.size(); x++){
-			if(entityDB.get(x).hasComponent(ComponentType.RENDER)){
+			if(entityDB.get(x).hasComponent(ComponentType.RENDER) ||
+			   entityDB.get(x).hasComponent(ComponentType.ANIMATION)){
 				entityDB.get(x).renderComponentType(gc, g, ComponentType.RENDER);
+				entityDB.get(x).renderComponentType(gc, g, ComponentType.ANIMATION);
 			}
 		}
 	}

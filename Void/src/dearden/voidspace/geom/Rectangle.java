@@ -14,6 +14,22 @@ public class Rectangle extends Point{
 	/*
 	 * Functions start.
 	 */
+	public void setX(float x){
+		this.x = x;
+	}
+	
+	public void setY(float y){
+		this.y = y;
+	}
+	
+	public void setCenterX(float x){
+		this.x = x - (this.width / 2);
+	}
+	
+	public void setCenterY(float y){
+		this.y = y - (this.height / 2);
+	}
+	
 	public void setHeight(float height){
 		this.height = height;
 	}
@@ -60,5 +76,13 @@ public class Rectangle extends Point{
 	
 	public float getWidth(){
 		return width;
+	}
+	
+	public float getCenterX(){
+		return this.x + (this.width / 2);
+	}
+	
+	public float getCenterY(){
+		return this.y + (this.height / 2);
 	}
 }

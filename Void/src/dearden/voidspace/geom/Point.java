@@ -39,8 +39,8 @@ public class Point {
 	/*
 	 * GET Functions start.
 	 */
-	public float[] getPos(){
-		return new float[]{x,y};
+	public Point getPos(){
+		return this;
 	}
 	
 	public float getX(){

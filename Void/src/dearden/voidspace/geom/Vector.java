@@ -7,29 +7,22 @@ public class Vector extends Point{
 	
 	public Vector(float x, float y){
 		super(x, y);
+		this.direction = 0;
+		this.magnitude = 0;
+	}
+	
+	public Vector(float x, float y, float direction, float magnitude){
+		super(x, y);
+		this.direction = direction;
+		this.magnitude = magnitude;
 	}
 	
 	public Vector(Point origin, Point end){
 		super(origin.x, origin.y);
 		magnitude = origin.distance(end);
-		
-		if(end.x - origin.x == 0){
-			if(end.y - origin.y > 0){
-				direction = 0f;
-			}else{
-				direction = 180f;
-			}
-		}else{
-			if(end.y - origin.y == 0){
-				if(end.x - origin.x > 0){
-					direction = 90f;
-				}else{
-					direction = 270f;
-				}
-			}else{
-				direction = (float) Math.toDegrees(Math.atan((end.y - origin.y / end.x - origin.x)));
-			}
-		}
+		float dx = end.x - this.x;
+		float dy = end.y - this.y;
+		direction = (float)Math.toDegrees(Math.atan2(dy,dx));
 	}
 	
 	/*
@@ -44,7 +37,15 @@ public class Vector extends Point{
 	}
 	
 	public Vector add(Vector other){
-		return new Vector(this.x + other.x, this.y + other.y);
+		other.setPos(this.endPoint());
+		return new Vector(this.getPos(), other.endPoint());
+	}
+	
+	public Point endPoint(){
+		float dx = (float)Math.cos(Math.toRadians(direction)) * this.magnitude;
+		float dy = (float)Math.sin(Math.toRadians(direction)) * this.magnitude;
+		
+		return new Point(this.x + dx, this.y + dy);
 	}
 	
 	/*

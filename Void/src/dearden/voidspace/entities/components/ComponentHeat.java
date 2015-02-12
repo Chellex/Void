@@ -63,7 +63,7 @@ public class ComponentHeat extends Component {
 	}
 
 	@Override
-	public void init() {
+	public void init(GameContainer gc) {
 		// TODO Auto-generated method stub
 		
 	}

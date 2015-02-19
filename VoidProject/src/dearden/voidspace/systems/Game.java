@@ -1,5 +1,6 @@
 package dearden.voidspace.systems;
 
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,15 +11,18 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import dearden.voidspace.entities.EntityHandler;
+import dearden.voidspace.entities.components.ComponentHandler;
 
 public class Game extends BasicGame {
-
+	
 	public static final float TICK = 16.66f;
 	
-	EntityHandler entityHandler;
 	SystemRender systemRender;
 	SystemMotion systemMotion;
 	SystemControl systemControl;
+	ComponentHandler componentHandler;
+	EntityHandler entityHandler;
+	
 	
 	public Game(String gamename) {
 		super(gamename);
@@ -27,10 +31,13 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer gc) 
 	throws SlickException {
-		entityHandler = new EntityHandler(gc);
 		systemRender = new SystemRender();
-		systemMotion = new SystemMotion();
+		systemRender.init();
+		systemMotion = new SystemMotion(); 
 		systemControl = new SystemControl();
+		componentHandler = new ComponentHandler();
+		componentHandler.init();
+		entityHandler = new EntityHandler(gc);
 	}
 
 	@Override
@@ -47,9 +54,12 @@ public class Game extends BasicGame {
 	}
 
 	public static void main(String[] args) {
+		
+		System.setProperty("org.lwjgl.librarypath", new File("natives/").getAbsolutePath());
+		
 		try {
 			AppGameContainer appgc;
-			appgc = new AppGameContainer(new Game("Simple Slick Game"));
+			appgc = new AppGameContainer(new Game("Logan is cool. I guess..."));
 			appgc.setDisplayMode(640, 480, false);
 			//appgc.setTargetFrameRate(60);
 			appgc.start();

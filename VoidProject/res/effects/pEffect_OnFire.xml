@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emitter imageName="" name="thrust">
+	<spawnInterval enabled="true" max="25.0" min="10.0"/>
+	<spawnCount enabled="true" max="8.0" min="5.0"/>
+	
+	<initialLife enabled="true" max="500.0" min="500.0"/>
+	<initialSize enabled="true" max="1.0" min="1.0"/>
+	
+	<!-- The range (in pixels) that each particle has a chance to spawn in. -->
+	<xOffset enabled="true" max="2.0" min="-2.0"/>
+	<yOffset enabled="true" max="2.0" min="-2.0"/>
+	
+	<initialDistance enabled="true" max="0.0" min="0.0"/>
+	<speed enabled="true" max="10.0" min="8.0"/>
+	<length enabled="false" max="0.0" min="0.0"/>
+	
+	<spread value="360.0"/>
+	<angularOffset value="0.0"/>
+	<growthFactor value="25.0"/>
+	<gravityFactor value="0.0"/>
+	<startAlpha value="255.0"/>
+	<endAlpha value="50.0"/>
+	
+	<color>
+		<step r="0.0" g="0.4" b="1.0" offset="0.0"/>
+		<step r="1.0" g="0.5" b="0.0" offset="0.2"/>
+		<step r="1.0" g="0.5" b="0.3"  offset="0.6"/>
+	</color>
+</emitter>
+	

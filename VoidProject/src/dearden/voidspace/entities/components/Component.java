@@ -7,13 +7,11 @@ import org.newdawn.slick.Graphics;
 
 public abstract class Component {
 
+	public int id;
+	
 	protected Entity parent;
 	protected String name;
 	protected ComponentType type;
-	
-	public String getName(){
-		return name;
-	}
 	
 	/*
 	 * Functions start.
@@ -34,11 +32,22 @@ public abstract class Component {
 	public void setParent(Entity parent){
 		this.parent = parent;
 	}
+	public Component setName(String name){
+		this.name = name;
+		return this;
+	}
+	public Component setId(int id){
+		this.id = id;
+		return this;
+	}
 	
 	/*
 	 * GET Functions start.
 	 */
 	public ComponentType getType(){
 		return type;
+	}
+	public String getName(){
+		return name;
 	}
 }

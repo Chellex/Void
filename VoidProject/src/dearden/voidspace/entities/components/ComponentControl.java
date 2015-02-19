@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 
+import static dearden.voidspace.entities.components.ComponentType.*;
 import dearden.voidspace.geom.Vector;
 
 public class ComponentControl extends Component{
@@ -36,7 +37,7 @@ public class ComponentControl extends Component{
 	
 	public ComponentControl(ComponentMotion motion){
 		this.motion = motion;
-		// Temp
+		// Temp. I will pass in an int array from the options screen.
 		keys = new int[12];
 		keys[0] = Input.KEY_W;
 		keys[1] = Input.KEY_S;
@@ -69,8 +70,13 @@ public class ComponentControl extends Component{
 		parent.sendMessage(type, Math.toDegrees(
 		Math.atan2(input.getMouseY() - parent.getCenterY(), input.getMouseX() - parent.getCenterX()))+"");
 		
-		//motion.getCurrentVector().setPos(input.getMouseX(), input.getMouseY());
+		if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON)){
+			if(parent.hasComponent(SOUND)){
+				parent.getComponent(SOUND, ComponentSound.class).play();
+			}
+		}
 		
+		// If control scheme DIRECTIONAL is chosen in options.
 		if(input.isKeyDown(keys[0])){
 			motion.addAccelInDirection(270);
 		}

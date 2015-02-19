@@ -85,4 +85,12 @@ public class Rectangle extends Point{
 	public float getCenterY(){
 		return this.y + (this.height / 2);
 	}
+	
+	public float getCenterXMidpoint(){
+		return new Point(this.x + this.width, this.y + this.height).midpoint(this).x;
+	}
+	
+	public float getCenterYMidpoint(){
+		return new Point(this.x + this.width, this.y + this.height).midpoint(this).y;
+	}
 }

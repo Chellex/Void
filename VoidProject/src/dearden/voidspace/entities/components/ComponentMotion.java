@@ -19,6 +19,15 @@ public class ComponentMotion extends Component {
 		this.accel = accel;
 	}
 	
+	/*
+	 * Required Functions start.
+	 */
+	@Override
+	public void init(GameContainer gc){
+		currentVector = new Vector(parent.getX(), parent.getY(), 0, 0);
+		accelTick = new Vector(parent.getX(), parent.getY(), 0, accel);
+	}
+	
 	@Override
 	public void update(GameContainer gc, int delta){	
 		deltaStore += delta;
@@ -37,15 +46,11 @@ public class ComponentMotion extends Component {
 	public void handleMessage(ComponentType type, String message){
 		// TODO 
 	}
-
+	
 	@Override
-	public void init(GameContainer gc){
-		currentVector = new Vector(parent.getX(), parent.getY(), 0, 0);
-		accelTick = new Vector(parent.getX(), parent.getY(), 0, accel);
+	public void cleanUp(){
+		// TODO
 	}
-
-	@Override
-	public void cleanUp(){}
 	
 	/*
 	 * Functions start.

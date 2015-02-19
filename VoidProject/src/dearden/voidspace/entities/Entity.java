@@ -88,11 +88,11 @@ public class Entity extends Rectangle {
 		return baseComponents;
 	}
 	
-	// Make this better Chris.
-	public Component getComponent(ComponentType type){
+	// Make this better Chris. I tried, now it's worse. Now it looks janky
+	public <T extends Component> T getComponent(ComponentType type, Class<T> obj){
 		for(int x = 0; x < baseComponents.size(); x++){
 			if(baseComponents.get(x).getType() == type){
-				return baseComponents.get(x);
+				return obj.cast(baseComponents.get(x));
 			}
 		}
 		return null;

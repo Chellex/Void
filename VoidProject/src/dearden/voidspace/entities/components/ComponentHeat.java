@@ -1,8 +1,5 @@
 package dearden.voidspace.entities.components;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-
 import dearden.voidspace.geom.Circle;
 
 public class ComponentHeat extends Component {
@@ -33,7 +30,7 @@ public class ComponentHeat extends Component {
 	 * on how many of the ship's addons are currently turned on.
 	 */
 	@Override
-	public void update(GameContainer gc, int delta){
+	public void update(float delta){
 		circleHeat.setRadius(heatCapacity * currentHeatLevel);
 	}
 	
@@ -63,13 +60,8 @@ public class ComponentHeat extends Component {
 	}
 
 	@Override
-	public void init(GameContainer gc) {
+	public void init() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void render(GameContainer gc, Graphics g) {
-		// TODO Auto-generated method stub
 	}
 }

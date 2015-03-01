@@ -1,0 +1,135 @@
+Ship Creation Design Document
+Date: Feb/28/2015
+Author: Chris Dearden
+---------------------------------------------------------------------------------------------------------------------------------------
+=================
+1.Damage Types
+=================
+Beam:
+	Laser shots and beams deal beam damage.
+	
+Void:
+	Pulsating explosions, also considered as beam explosions.
+	
+Physical:
+	Bullets. Simply put.
+	
+Explosive:
+	Missles, Bombs, Mines.
+
+=================
+2. Armor Types
+=================
+Shield Types:
+-----------------------------------------------------------------------------------------------
+	Alpha Shield:
+		-Reduces the incoming damage from Physical and Beam types by 20%.
+	
+	Beta Shield:
+		-Reduces the incoming damage from Void and Explosive types by 15%.
+		-5% Chance to reflect Physical and Beam type projectiles. (Can't reflect Beam Lasers only Shot Lasers)
+	
+	Gamma Shield:
+		-Reduces the incoming damage from all sources by 5%.
+		-Increase ship speed by 10% when in combat. (When hit.)
+	
+Plating Types:
+------------------------------------------------------------------------------------------------
+	Energy Plating:
+		-Resists Beam and Void damage types by 10%.
+		-Shield Recharge time is increased by 30%.
+		
+	Plasma Plating:
+		-Resist Physical and Explosive types by 10%.
+		-Absorb 10% of Beam damage as HP.
+		
+	Quadratic Plating:
+		-Gain defense against all types of damage, but the amount gained is 5%.
+		
+	Tritonic Plating:
+		-Gain defense against Beam, Void, and Explosive Types by 8%;
+		
+	Harmonic Plating:
+		-Gain defense against Beam and Physical Types by 12%;
+		
+	Nano Plating:
+		-Gain defense against Beam types by 30%.
+		
+==================
+3. Chassis Types
+==================
+Fighter
+	Description: A small agile unit. Light and quick to change direction. Do good damage but can't take a hit.
+	
+	Size:   Small
+	Weight: ???
+
+	Equipment Slots
+	----------
+	Slot Primary Weapon
+	Slot Secondary Weapon
+	Slot Utility
+	Slot Shield Generator
+	Slot Armor
+	Slot Thruster
+	
+Destroyer
+	Description: A medium sized unit designed to protect other ships from Fighters. Deals very high damage, but also has weak armor.
+	             A single destroyer can take on multiple Fighters, but can be easily overwhelmed by packs of them.
+	             
+	Size:   Medium
+	Weight: ???
+
+	Equipment Slots
+	----------
+	Slot Primary Weapon
+	Slot Secondary Weapon
+	Slot Utility
+	Slot Shield Generator
+	Slot Armor
+	Slot Armor
+	Slot Thruster
+	
+Cruiser
+	Description: A medium sized ship that can sustain a good amount of damage. It can also bring multiple utility devices
+				 into the battlezone such as a Cloaking Device and Mine Detector.
+
+	Size:   Medium
+	Weight: ???
+
+	Equipment Slots
+	----------
+	Slot Primary Weapon
+	Slot Secondary Weapon
+	Slot Utility
+	Slot Utility
+	Slot Shield Generator
+	Slot Shield Generator
+	Slot Armor
+	Slot Armor
+	Slot Thruster
+	Slot Thruster
+	
+Flagship(Maybe a new gamemode?)
+	Description: A Large ship that can tank just about anything. Most commonly equipped are multiple giant beam lasers that rend
+				 large numbers of enemy ships in a single blow.
+
+	Size:   Large
+	Weight: ???
+
+	Equipment Slots
+	----------
+	Slot Primary Weapon
+	Slot Secondary Weapon
+	Slot Utility
+	Slot Utility
+	Slot Utility
+	Slot Shield Generator
+	Slot Shield Generator
+	Slot Armor
+	Slot Armor
+	Slot Armor
+	Slot Thruster
+	Slot Thruster
+	Slot Thruster
+	Slot Thruster

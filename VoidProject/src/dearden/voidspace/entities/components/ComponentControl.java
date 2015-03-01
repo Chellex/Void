@@ -1,8 +1,8 @@
 package dearden.voidspace.entities.components;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import static dearden.voidspace.entities.components.ComponentType.*;
 import dearden.voidspace.geom.Vector;
@@ -39,18 +39,18 @@ public class ComponentControl extends Component{
 		this.motion = motion;
 		// Temp. I will pass in an int array from the options screen.
 		keys = new int[12];
-		keys[0] = Input.KEY_W;
-		keys[1] = Input.KEY_S;
-		keys[2] = Input.KEY_A;
-		keys[3] = Input.KEY_D;
-		keys[4] = Input.KEY_1;
-		keys[5] = Input.KEY_2;
-		keys[6] = Input.KEY_3;
-		keys[7] = Input.MOUSE_LEFT_BUTTON;
-		keys[8] = Input.MOUSE_RIGHT_BUTTON;
-		keys[9] = Input.KEY_Q;
-		keys[10] = Input.KEY_E;
-		keys[11] = Input.KEY_SPACE;
+		keys[0] = Input.Keys.W;
+		keys[1] = Input.Keys.S;
+		keys[2] = Input.Keys.A;
+		keys[3] = Input.Keys.D;
+		keys[4] = Input.Keys.NUM_1;
+		keys[5] = Input.Keys.NUM_2;
+		keys[6] = Input.Keys.NUM_3;
+		keys[7] = Input.Buttons.LEFT;
+		keys[8] = Input.Buttons.RIGHT;
+		keys[9] = Input.Keys.Q;
+		keys[10] = Input.Keys.E;
+		keys[11] = Input.Keys.SPACE;
 	}
 	
 	@Override
@@ -59,47 +59,36 @@ public class ComponentControl extends Component{
 	}
 	
 	@Override
-	public void init(GameContainer gc){
+	public void init(){
 		type = ComponentType.CONTROL;
-		input = gc.getInput();
+		input = Gdx.input;
 	}
 
 	@Override
-	public void update(GameContainer gc, int delta){
+	public void update(float delta){
 		
 		parent.sendMessage(type, Math.toDegrees(
-		Math.atan2(input.getMouseY() - parent.getCenterY(), input.getMouseX() - parent.getCenterX()))+"");
+		Math.atan2(input.getY(0) - parent.getCenterY(), input.getX(0) - parent.getCenterX()))+ "");
 		
-		if(input.isMousePressed(Input.MOUSE_LEFT_BUTTON)){
+		if(input.isButtonPressed(keys[7])){
 			if(parent.hasComponent(SOUND)){
 				parent.getComponent(SOUND, ComponentSound.class).play();
 			}
 		}
 		
 		// If control scheme DIRECTIONAL is chosen in options.
-		if(input.isKeyDown(keys[0])){
-			motion.addAccelInDirection(270);
+		if(input.isKeyPressed(keys[0])){
+			motion.addAccelInDirection(270, delta);
 		}
-		if(input.isKeyDown(keys[1])){
-			motion.addAccelInDirection(90);
+		if(input.isKeyPressed(keys[1])){
+			motion.addAccelInDirection(90, delta);
 		}
-		if(input.isKeyDown(keys[2])){
-			motion.addAccelInDirection(180);
+		if(input.isKeyPressed(keys[2])){
+			motion.addAccelInDirection(180, delta);
 		}
-		if(input.isKeyDown(keys[3])){
-			motion.addAccelInDirection(0);
+		if(input.isKeyPressed(keys[3])){
+			motion.addAccelInDirection(0, delta);
 		}
-		if(input.isKeyDown(keys[11])){
-			motion.addVector(new Vector(parent.getCenterX(),
-										parent.getCenterY(),
-										motion.getCurrentVector().getDirection() + 180, 
-										motion.getCurrentVector().getMagnitude()/2));
-		}
-	}
-
-	@Override
-	public void render(GameContainer gc, Graphics g){
-		
 	}
 
 	@Override

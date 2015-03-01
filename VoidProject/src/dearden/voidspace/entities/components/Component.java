@@ -1,9 +1,8 @@
 package dearden.voidspace.entities.components;
 
-import dearden.voidspace.entities.Entity;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
+import dearden.voidspace.entities.Entity;
 
 public abstract class Component {
 
@@ -16,11 +15,11 @@ public abstract class Component {
 	/*
 	 * Functions start.
 	 */
-	public void init(GameContainer gc){}
+	public void init(){}
 	
-	public void update(GameContainer gc, int delta){}
+	public void update(float delta){}
 	
-	public void render(GameContainer gc, Graphics g){}
+	public void render(SpriteBatch batch){}
 	
 	public abstract void handleMessage(ComponentType type, String message);
 	

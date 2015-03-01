@@ -1,10 +1,9 @@
 package dearden.voidspace.entities.components;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.particles.effects.FireEmitter;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import dearden.voidspace.systems.Game;
 
@@ -14,18 +13,20 @@ public class ComponentAnimation extends Component {
 	private int currentFrame = 0;
 	private int speed;				//Number of Game.TICK before image change.
 	private int deltaStore;
-	private Image[] animation;
+	private Sprite[] animation;
 	
-	public ComponentAnimation(int frames, int speed, String spriteSheetDir, int height, int width)
-	throws SlickException{
+	public ComponentAnimation(int frames, int speed, String spriteSheetDir, int height, int width){
 		type = ComponentType.ANIMATION;
 		
 		this.speed = speed;
 		this.frames = frames;
 		
-		animation = new Image[frames];
+		animation = new Sprite[frames];
+		Texture tex = new Texture(spriteSheetDir);
 		for(int x = 0; x < frames; x++){
-			animation[x] = new Image(spriteSheetDir).getSubImage(x * width, 0, width, height);
+			//animation[x] = new Image(spriteSheetDir).getSubImage(x * width, 0, width, height);
+			
+			animation[x] = new Sprite(new TextureRegion(tex, x * width, 0, width, height));
 		}
 	}
 	
@@ -33,7 +34,7 @@ public class ComponentAnimation extends Component {
 	 * Functions start.
 	 */
 	@Override
-	public void update(GameContainer gc, int delta){
+	public void update(float delta){
 		deltaStore += delta;
 		
 		if(deltaStore > Game.TICK * speed){
@@ -48,24 +49,20 @@ public class ComponentAnimation extends Component {
 	}
 	
 	@Override
-	public void render(GameContainer gc, Graphics g){
-		animation[currentFrame].draw(parent.getX(), parent.getY());
+	public void render(SpriteBatch batch){
+		//animation[currentFrame].draw(parent.getX(), parent.getY());
+		animation[currentFrame].setPosition(parent.getX(), parent.getY());
+		animation[currentFrame].draw(batch);
 	}
 
 	@Override
 	public void handleMessage(ComponentType type, String message) {
 		if(type == ComponentType.CONTROL){
-			animation[currentFrame].setRotation(Float.parseFloat(message) + 90);
+			animation[currentFrame].setRotation(Float.parseFloat(message) + 270);
 		}
 	}
 
 	public void cleanUp(){
-		try{
-			for(int x = 0; x < animation.length; x++){
-				animation[x].destroy();
-			}
-		}catch(SlickException e){
-			e.printStackTrace();
-		}
+		
 	}
 }

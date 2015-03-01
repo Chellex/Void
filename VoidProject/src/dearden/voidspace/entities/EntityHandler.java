@@ -11,28 +11,24 @@ import dearden.voidspace.entities.components.ComponentType;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
-
 public class EntityHandler {
 
 	public List<Entity> entityDB;
 	private Entity entityBuilder;
 	
-	public EntityHandler(GameContainer gc)
-	throws SlickException{
+	public EntityHandler(){
 		entityDB = new ArrayList<Entity>();
 		
 		entityBuilder = new Entity(100, 100, 25, 25);
 		//entityBuilder.addComponent(new ComponentRender("res/ship.png"));
 		entityBuilder.addComponent(new ComponentAnimation(2 ,1 ,"res/ship_sheet.png", 44, 32));
-		entityBuilder.addComponent(new ComponentMotion(10f, 0.03f));
+		entityBuilder.addComponent(new ComponentMotion(10f, 0.3f));
 		entityBuilder.addComponent(new ComponentControl((ComponentMotion)entityBuilder.getComponent(ComponentType.MOTION, ComponentMotion.class)));
-		entityBuilder.addComponent(componentDB.get(1000));
-		entityBuilder.addComponent(componentDB.get(500));
+		//entityBuilder.addComponent(componentDB.get(1000));
+		//entityBuilder.addComponent(componentDB.get(500));
 		
 		for(int x = 0; x < entityBuilder.getBaseComponents().size(); x++){
-			entityBuilder.getBaseComponents().get(x).init(gc);
+			entityBuilder.getBaseComponents().get(x).init();
 		}
 		
 		entityDB.add(entityBuilder);

@@ -1,10 +1,5 @@
 package dearden.voidspace.entities.components;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL20;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.opengl.Texture;
-
 /*
  * Class Explanation - ComponentLighting
  * =============================================================
@@ -34,7 +29,7 @@ public class ComponentLighting extends Component {
 	 * Required Functions start.
 	 */
 	@Override
-	public void init(GameContainer gc){
+	public void init(){
 		
 	}
 	

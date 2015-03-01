@@ -7,8 +7,7 @@ import dearden.voidspace.geom.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Entity extends Rectangle {
 
@@ -38,30 +37,30 @@ public class Entity extends Rectangle {
 		}
 	}
 	
-	public void updateComponents(GameContainer gc, int delta){
+	public void updateComponents(float delta){
 		for(int x = 0; x < baseComponents.size(); x++){
-			baseComponents.get(x).update(gc, delta);
+			baseComponents.get(x).update(delta);
 		}
 	}
 	
-	public void renderComponents(GameContainer gc, Graphics g){
+	public void renderComponents(SpriteBatch batch){
 		for(int x = 0; x < baseComponents.size(); x++){
-			baseComponents.get(x).render(gc, g);
+			baseComponents.get(x).render(batch);
 		}
 	}
 	
-	public void updateComponentType(GameContainer gc, int delta, ComponentType type){
+	public void updateComponentType(float delta, ComponentType type){
 		for(int x = 0; x < baseComponents.size(); x++){
 			if(baseComponents.get(x).getType() == type){
-				baseComponents.get(x).update(gc, delta);
+				baseComponents.get(x).update(delta);
 			}
 		}
 	}
 	
-	public void renderComponentType(GameContainer gc, Graphics g, ComponentType type){
+	public void renderComponentType(SpriteBatch batch, ComponentType type){
 		for(int x = 0; x < baseComponents.size(); x++){
 			if(baseComponents.get(x).getType() == type){
-				baseComponents.get(x).render(gc, g);
+				baseComponents.get(x).render(batch);
 			}
 		}
 	}
@@ -88,7 +87,7 @@ public class Entity extends Rectangle {
 		return baseComponents;
 	}
 	
-	// Make this better Chris. I tried, now it's worse. Now it looks janky
+	// Make this better Chris. I tried, now it's worse. Now it looks really janky.
 	public <T extends Component> T getComponent(ComponentType type, Class<T> obj){
 		for(int x = 0; x < baseComponents.size(); x++){
 			if(baseComponents.get(x).getType() == type){

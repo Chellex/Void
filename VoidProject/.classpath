@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_20"/>
-	<classpathentry kind="lib" path="C:/CompDMS/ThrexCMS/lib/bin/jinput.jar"/>
-	<classpathentry kind="lib" path="C:/CompDMS/ThrexCMS/lib/bin/jogg-0.0.7.jar"/>
-	<classpathentry kind="lib" path="C:/CompDMS/ThrexCMS/lib/bin/jorbis-0.0.15.jar"/>
-	<classpathentry kind="lib" path="C:/CompDMS/ThrexCMS/lib/bin/lwjgl.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://javadoc.lwjgl.org/"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VoidProject/natives"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/CompDMS/ThrexCMS/lib/bin/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="C:/CompDMS/ThrexCMS/lib/bin/slick.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://slick.ninjacave.com/javadoc/"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="src" path="assets"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/chris_000/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.5.4/c16e1a0088ae7f0cac4a8d6595be32432e6069f4/gdx-1.5.4.jar" sourcepath="C:/Users/chris_000/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.5.4/3bc504d7330fbbc432a0fa97e64ae118632d1a86/gdx-1.5.4-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

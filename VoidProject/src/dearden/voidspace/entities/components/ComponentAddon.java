@@ -1,8 +1,6 @@
 package dearden.voidspace.entities.components;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ComponentAddon extends Component{
 	
@@ -12,17 +10,17 @@ public class ComponentAddon extends Component{
 	}
 
 	@Override
-	public void init(GameContainer gc){
+	public void init(){
 		
 	}
 
 	@Override
-	public void update(GameContainer gc, int delta){
+	public void update(float delta){
 		
 	}
 
 	@Override
-	public void render(GameContainer gc, Graphics g){
+	public void render(SpriteBatch batch){
 		
 	}
 

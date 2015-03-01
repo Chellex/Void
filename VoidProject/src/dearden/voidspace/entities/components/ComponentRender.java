@@ -1,19 +1,18 @@
 package dearden.voidspace.entities.components;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class ComponentRender extends Component{
 
-	private Image sprite;
+	private Sprite sprite;
 	private boolean visible;
 	
-	public ComponentRender(String sprite_dir)
-	throws SlickException{
+	public ComponentRender(String sprite_dir){
 		type = ComponentType.RENDER;
-		sprite = new Image(sprite_dir);
+		Texture tex = new Texture(sprite_dir);
+		sprite = new Sprite(tex);
 		visible = true;
 	}
 	
@@ -21,9 +20,9 @@ public class ComponentRender extends Component{
 	 * Functions start.
 	 */
 	@Override
-	public void render(GameContainer gc, Graphics g){
+	public void render(SpriteBatch batch){
 		if(visible == true){
-			sprite.draw(parent.getX(), parent.getY());
+			sprite.draw(batch);
 		}
 	}
 
@@ -41,10 +40,6 @@ public class ComponentRender extends Component{
 
 	@Override
 	public void cleanUp() {
-		try{
-			sprite.destroy();
-		}catch(SlickException e){
-			e.printStackTrace();
-		}
+		
 	}
 }
